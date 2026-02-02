@@ -16,6 +16,14 @@ for character in chinese_characters:
         "UNICODE": unicode_code
     })
 
+is_sorted = input("是否按照 unicode 排序(y/n)： ")
+if is_sorted == 'y':
+    unicode_characters = sorted(
+        unicode_characters, 
+        key=lambda x: int(x["UNICODE"][2:], 16)
+    )
+
+
 # CP950 清單 --> 繁體中文字集
 data_dict = {"CP950": unicode_characters}
 

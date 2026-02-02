@@ -9,16 +9,16 @@ with open('info.json', 'r', encoding='utf-8') as f:
     info = json.load(f)
 
 title = info["TITLE"]
-
+# {title}/{title}-Table
 # 創建存儲 QR Code 的資料夾
-qrcode_folder1 = f"./{title}-qrcode"
+qrcode_folder1 = f"{title}/{title}-qrcode"
 os.makedirs(qrcode_folder1, exist_ok=True)
-qrcode_folder2 = f"./{title}-Merge"
+qrcode_folder2 = f"{title}/{title}-Merge"
 os.makedirs(qrcode_folder2, exist_ok=True)
 
 for i in range(info["TOTAL_PAGES"]):
     # 讀取原本的 SVG 檔案
-    with open(f"./{title}-Table/{i+1:03d}.svg", "rb") as file:
+    with open(f"{title}/{title}-Table/{i+1:03d}.svg", "rb") as file:
         svg_content = file.read()
 
     # 產生 QR Code 圖片
@@ -26,10 +26,10 @@ for i in range(info["TOTAL_PAGES"]):
     qr_code = qrcode.make(i+1, image_factory=factory)
 
     # 將 QR Code 存成檔案
-    qr_code.save(f"{qrcode_folder1}/qrcode_{i+1:03d}.svg")
+    qr_code.save(f"{qrcode_folder1}/{title}-qrcode_{i+1:03d}.svg")
 
     # 讀取 QR Code SVG 檔案
-    with open(f"{qrcode_folder1}/qrcode_{i+1:03d}.svg", "rb") as qr_file:
+    with open(f"{qrcode_folder1}/{title}-qrcode_{i+1:03d}.svg", "rb") as qr_file:
         qr_code_svg_str = qr_file.read().decode('utf-8')
 
     # 找到最後一個 </svg> 標籤的位置
@@ -43,7 +43,7 @@ for i in range(info["TOTAL_PAGES"]):
     )
 
     # 將更新後的 SVG 寫回檔案
-    with open(f"Merge/{i+1:03d}.svg", "wb") as file:
+    with open(f"{title}/{title}-Merge/{i+1:03d}.svg", "wb") as file:
         file.write(updated_svg_content.encode('utf-8'))
 
 print("QR Code 已成功插入 SVG 中")

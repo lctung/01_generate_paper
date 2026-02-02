@@ -264,7 +264,7 @@ def output_svg(filename):
     plt.ylim(297, 0)
     plt.subplots_adjust(top=1, bottom=0, right=1, left=0, hspace=0, wspace=0)  # 刪除白邊
     plt.margins(0, 0)
-    plt.savefig(f"./{title}-Table/{filename}.svg")
+    plt.savefig(f"{title}/{title}-Table/{filename}.svg")
 
 def pipeline(args):
     (page, count) = args
@@ -281,7 +281,7 @@ unicode = read_json("./CP950.json")
 
 if __name__ == "__main__":
     cpus = mp.cpu_count()  # count of CPU cores
-    result_path = f'Table' # 存放資料夾
+    result_path = f'{title}/{title}-Table' # 存放資料夾
     if not os.path.exists(result_path):
         os.makedirs(result_path)
     print(f"Using {cpus = }")
