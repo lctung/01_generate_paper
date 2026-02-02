@@ -42,7 +42,7 @@ cd ..
 cd 1_generate_CP950
 ```
 
-### 刪除稿紙中的空白字元
+### 刪除稿紙中的不必要字元
 ```
 python 1_preprocess_characters.py
 ```
@@ -63,6 +63,7 @@ cd 2_generate_manuscript
 
 ### 修改 `info.json` 程式碼
 ```json
+"TITLE": "千字文", # check the title
 "TOTAL_CHARACTERS": 1000, # check the number of characters
 "TOTAL_PAGES": 10, # check the pages
 "ID": "你的學號", # enter your ID here
