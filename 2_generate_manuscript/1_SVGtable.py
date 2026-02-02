@@ -22,6 +22,7 @@ with open('info.json','r', encoding='utf-8') as f:
     info = json.load(f)
 total_characters = info["TOTAL_CHARACTERS"]
 total_pages = info["TOTAL_PAGES"]
+title = info["TITLE"]
 
 def decimal_to_binary(number, digits):
     index = digits - 1
@@ -263,8 +264,7 @@ def output_svg(filename):
     plt.ylim(297, 0)
     plt.subplots_adjust(top=1, bottom=0, right=1, left=0, hspace=0, wspace=0)  # 刪除白邊
     plt.margins(0, 0)
-    plt.savefig("./Table/" + filename + ".svg")
-
+    plt.savefig(f"./{title}-Table/{filename}.svg")
 
 def pipeline(args):
     (page, count) = args
