@@ -1,7 +1,12 @@
 import json
+import os
 
 with open('chinese_character.txt', 'r', encoding='utf-8') as file:
     text = file.read()
+
+with open('../2_generate_manuscript/info.json','r', encoding='utf-8') as f:
+    info = json.load(f)
+title = info["TITLE"]
 
 # 使用列表推導式將字串分割為單個字元的列表
 chinese_characters = [char for char in text]
@@ -28,7 +33,10 @@ if is_sorted == 'y':
 data_dict = {"CP950": unicode_characters}
 
 # 保存文件
-with open("../2_generate_manuscript/CP950.json", "w", encoding="utf-8") as json_file:
+folder_path = "../2_generate_manuscript/CP950/"
+os.makedirs(os.path.dirname(folder_path), exist_ok=True)
+
+with open(f"{folder_path}CP950-{title}.json", "w", encoding="utf-8") as json_file:
     json.dump(data_dict, json_file, ensure_ascii=False, indent=2)
 
-print("已產生 CP950.json")
+print(f"已產生 CP950-{title}.json")
