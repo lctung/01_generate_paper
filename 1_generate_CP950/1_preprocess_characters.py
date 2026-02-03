@@ -13,7 +13,7 @@ raw_clean_text = "".join(text.lstrip('\ufeff').split())
 is_specified = input("是否刪除指定字元(y/n)： ")
 
 if is_specified == 'y':
-    exclude_chars = "，。；「」：！？《》、"  # 填入指定刪除的字元
+    exclude_chars = "，。；「」：！？《》、"  # <填入指定刪除的字元>
     clean_text = "".join([char for char in raw_clean_text if char not in exclude_chars])
 else:
     clean_text = raw_clean_text
