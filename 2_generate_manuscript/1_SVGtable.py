@@ -21,7 +21,7 @@ title = info["TITLE"]
 
 font_configs = [
     {"name": "NotoSansTC", "path": r"D:\NTUT\AI\Font-Project\01-1_generate_paper-main\2_generate_manuscript\font_type\NotoSansTC-ExtraLight.ttf"},
-    {"name": "FreeSerif", "path": r"D:\NTUT\AI\Font-Project\01-1_generate_paper-main\2_generate_manuscript\font_type\FreeSerif.ttf"}
+    {"name": "FreeSans", "path": r"D:\NTUT\AI\Font-Project\01-1_generate_paper-main\2_generate_manuscript\font_type\FreeSans.ttf"}
 ]
 
 font_objects = []
