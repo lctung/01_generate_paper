@@ -1,12 +1,18 @@
+# -- 系統與環境 --
+__pycache__/
+.venv/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
 # -- 暫存與記錄檔 --
-manuscript_paper_copy.txt
 character.txt
 標點符號.txt
-all_manuscript_copy.txt
+*copy.txt
 character_history.txt
 
-# -- 輸出資料夾 --
-manuscripts-final/
+# -- 輸出 --
 CP950/
 千字文/
 長恨歌/
@@ -16,9 +22,8 @@ CP950/
 英文、數字/
 標點符號/
 姓氏名字號/
+manuscripts-final/
 
 # -- 個人項目 --
 114598033*
 
-# -- 路徑獨立 --
-config.yaml

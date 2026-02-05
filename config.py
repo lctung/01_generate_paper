@@ -13,8 +13,8 @@ DIR_CP950_JSON = DIR_GEN_MANUSCRIPT / "CP950"
 DIR_FINAL_PDF = DIR_GEN_MANUSCRIPT / "manuscripts-final"
 
 # 常用檔案
-PATH_MANUSCRIPT_PAPER = DIR_GEN_CP950 / "manuscript_paper_copy.txt"
+PATH_MANUSCRIPT_PAPER = DIR_GEN_CP950 / "manuscript_paper.txt"
 PATH_CHARACTER_PAPER = DIR_GEN_CP950 / "character.txt"
 PATH_CHARACTER_HISTORY = DIR_GEN_CP950/ "character_history.txt"
 PATH_INFO_JSON = DIR_GEN_MANUSCRIPT / "info.json"
-PATH_ALL_MANUSCRIPT = DIR_GEN_CP950 / "all_manuscript_copy.txt"
+PATH_ALL_MANUSCRIPT = DIR_GEN_CP950 / "all_manuscript.txt"
