@@ -26,6 +26,9 @@ total_characters = info["TOTAL_CHARACTERS"]
 total_pages = info["TOTAL_PAGES"]
 title = info["TITLE"]
 
+dir_title = config.DIR_GEN_MANUSCRIPT / title # 該稿紙的專用資料夾
+table_folder = dir_title / f"{title}-Table"
+
 font_setting = [
     {"name": "NotoSansTC", "path": f"{config.DIR_FONTS}/NotoSansTC-ExtraLight.ttf"},
     {"name": "FreeSans", "path": f"{config.DIR_FONTS}/FreeSans.ttf"}
@@ -147,26 +150,26 @@ def create_plot(page):
         axes.add_patch(rect)
 
 def read_json(file):
-    with open(file) as f:
+    if not os.path.exists(file):
+        print(f"找不到 JSON 檔案: {file}")
+        return []
+    with open(file, 'r', encoding='utf-8') as f:
         try:
             p = json.load(f)
-        except UnicodeDecodeError:
-            # Handle the UnicodeDecodeError here (e.g., print a message, log it, or skip the file).
-            print(f"Error reading JSON file: {file}")
+            v = [""] * total_characters
+            for i in range(total_characters):
+                try:
+                    # 確保抓取的是 JSON 裡的 unicode
+                    code = p["CP950"][i]["UNICODE"][2:6]
+                    v[i] = "\\u{}".format(code)
+                except:
+                    v[i] = ""
+            return v
+        except Exception as e:
+            print(f"解析 JSON 失敗: {e}")
             return []
-        
-        v = [""] * total_characters
-        for i in range(total_characters):
-            try:
-                code = p["CP950"][i]["UNICODE"][2:6]
-                v[i] = "\\u{}".format(code)
-            except Exception as e:
-                # Handle the exception here (e.g., print a message, log it, or skip the entry).
-                print(f"Error processing entry {i}: {str(e)}")
-                v[i] = ""  # You can decide what to do in case of an error.
-        return v
 
-def print_font(count, page, fnip):
+def print_font(count, page, unicode_list, fnip):
     index = 0
     X = np.arange(7.5, 192.5, 20)
     Y = np.arange(21, 281, 26)
@@ -176,7 +179,7 @@ def print_font(count, page, fnip):
             if count >= total_characters:
                 continue
             
-            char_code = unicode[count]
+            char_code = unicode_list[count]
             if char_code == "123" or not char_code:
                 fnip[page][index] = ""
             else:
@@ -302,39 +305,51 @@ def table_square(axes):
             alpha=0.4,
         )  ## vvvv
 
-
 def output_svg(filename):
     plt.axis("off")  # 刪除座標軸
     plt.xlim(0, 210)
     plt.ylim(297, 0)
     plt.subplots_adjust(top=1, bottom=0, right=1, left=0, hspace=0, wspace=0)  # 刪除白邊
     plt.margins(0, 0)
-    plt.savefig(f"{title}/{title}-Table/{filename}.svg")
+    plt.savefig(table_folder / f"{filename}.svg")
 
 def pipeline(args):
-    (page, count) = args
+    (page, count, unicode_list) = args # 包裹內容：頁碼, 起始位置, 完整清單
+    # 子進程需要自己的 fnip 局部變數 (或直接忽略，因為主要是畫圖)
+    local_fnip = [[""] * 100 for _ in range(total_pages)]
     try:
         create_plot(page)
-        print_font(count, page, fnip)
+        print_font(count, page, unicode_list, local_fnip)
         output_svg("{:03d}".format(page + 1))
     finally:
         plt.close('all')
 
 
-fnip = [[""] * 100 for _ in range(total_pages)]  # Font Number in Page (Unicode)
-unicode = read_json(f"{config.DIR_CP950_JSON}/CP950-{title}.json")
+# fnip = [[""] * 100 for _ in range(total_pages)]  # Font Number in Page (Unicode)
+
 
 if __name__ == "__main__":
+    cp950_path = config.DIR_CP950_JSON / f"CP950-{title}.json"
+    unicode_data = read_json(cp950_path)
+
+    if not unicode_data:
+        print("錯誤：無法讀取 Unicode 資料，請確認是否先跑了 2_generate_CP950.py")
+        sys.exit()
+
     cpus = mp.cpu_count()  # count of CPU cores
-    dir_title = config.DIR_GEN_MANUSCRIPT / title # 該稿紙的專用資料夾
-    result_path = dir_title /f"{title}-Table" # 存放資料夾
+    
+    worker_args = [
+        (p, p * 100, unicode_data) 
+        for p in range(total_pages)
+    ]
+
+    result_path = table_folder # 存放資料夾
     
     if not os.path.exists(result_path):
         os.makedirs(result_path)
     print(f"Using {cpus = }")
     pool = mp.Pool(cpus)
-    args = zip(range(0, total_pages), range(0, total_pages * 100 + 1, 100))
-    for _ in tqdm(pool.imap_unordered(pipeline, args), total=total_pages):
-        ...
+    for _ in tqdm(pool.imap_unordered(pipeline, worker_args), total=total_pages):
+        pass
     pool.close()
     pool.join()

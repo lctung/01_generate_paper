@@ -39,9 +39,12 @@ data_dict = {"CP950": unicode_characters}
 
 # 保存文件
 folder_path = config.DIR_CP950_JSON
-os.makedirs(os.path.dirname(folder_path), exist_ok=True)
+folder_path.mkdir(parents=True, exist_ok=True)
 
-with open(f"{folder_path}/CP950-{title}.json", "w", encoding="utf-8") as json_file:
+# 使用 / 拼接路徑，這樣就不用擔心反斜線 \ 的問題
+final_path = folder_path / f"CP950-{title}.json"
+
+with open(final_path, "w", encoding="utf-8") as json_file:
     json.dump(data_dict, json_file, ensure_ascii=False, indent=2)
 
 print(f"已產生 CP950-{title}.json")
