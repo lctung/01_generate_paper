@@ -1,5 +1,5 @@
 # -- 系統與環境 --
-__pycache__/
+__pycache__
 
 # -- 暫存與記錄檔 --
 character.txt
