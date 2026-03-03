@@ -16,7 +16,7 @@ title = input("請輸入稿紙標題 (ex. 千字文)：")
 # 依據空白字元分割
 raw_clean_text = "".join(text.lstrip('\ufeff').split())
 
-is_specified = input("是否刪除指定字元(y/n)： ")
+is_specified = input("是否刪除標點符號(y/n)： ")
 
 if is_specified == 'y':
     exclude_chars = "，。；「」：！？《》、"  # <填入指定刪除的字元>
@@ -28,7 +28,7 @@ not_repeated = input("是否去除重複字元(y/n)： ")
 
 if not_repeated == 'y':
     unique_characters = set(clean_text)
-    with open(config.PATH_CHARACTERS_HISTORY, "r", encoding="utf-8") as f:
+    with open(config.PATH_CHARACTER_HISTORY, "r", encoding="utf-8") as f:
         history_characters = set(f.read())
     unique_characters = unique_characters - history_characters
 else:
