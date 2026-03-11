@@ -22,14 +22,16 @@ unicode_ranges = {
     "CJK Compatibility": (0x3300, 0x33FF),
     "Yijing Hexagrams Symbols": (0x4DC0, 0x4DFF),
     "CJK Compatibility Forms": (0xFE30, 0xFE4F),
-    "全形標點符號及英文和數字":(0xFF01,0xFF65)
+    "全形標點符號及英文和數字":(0xFF01,0xFF65),
+    "中日韓統一表意文字擴充區B列表":(0x20000,0x2A6DD)
 }
 
 # 產生 Unicode 文字內容
 def generate_unicode_text():
     text_content = ""
     for category, (start, end) in unicode_ranges.items():
-        text_content += f"{category} (U+{start:04X} ~ U+{end:04X}):\n"
+        #text_content += f"{category} (U+{start:04X} ~ U+{end:04X}):\n"
+        text_content += f"{category} (U+{start:05X} ~ U+{end:05X}):\n"
         text_content += "".join(chr(code) for code in range(start, end + 1) if chr(code).isprintable())
         text_content += "\n\n"
     return text_content

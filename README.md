@@ -4,6 +4,7 @@
 ![flow](./img/flow.png)
 
 ----
+
 ```
 # [稿紙對應編號]
 1. 千字文
@@ -17,6 +18,7 @@
 ```
 
 -----
+
 
 ## 🔆環境建置(初次設定)
 ### 1. 下載專案
@@ -89,6 +91,7 @@ python 1_preprocess_characters.py
     - y: 刪除指定字元，如：，。；「」等
     - 適用稿紙： `千字文` `長恨歌` `洛神賦` `詩經`
 - 是否去除重複字元(y/n)
+
     - y: 去除曾經出現在 `千字文` `長恨歌` `洛神賦` `詩經` 的字元，以及刪除同份稿紙內容中的重複字元
     - 適用稿紙： `部首、注音、日文` `英文、數字` `標點符號` `姓氏名字號`
 
@@ -123,8 +126,14 @@ cd 2_generate_manuscript
 ### 3. 執行程式碼
 #### (1) 生成 svg 稿紙
 儲存位置：`.\2_generate_manuscript\{稿紙標題>\{稿紙標題}-Table`
+
+##### 原版：
 ```
 python 1_SVGtable.py
+```
+##### 加強版：
+```
+python 1a_SVGtable.py
 ```
 #### (2) 在 svg 稿紙加上 QRcode
 儲存位置：`.\2_generate_manuscript\{稿紙標題}\{稿紙標題}-Merge`
@@ -137,7 +146,9 @@ python 2_QR_add.py
 python 3_SVG2PDF.py
 ```
 #### (4) 多個 pdf 檔案合併成一個 pdf 檔案
+
 儲存位置：`.\2_generate_manuscript\manuscripts-final`
+
 ```
 python 4_PDFmerge.py
 ```

@@ -311,6 +311,30 @@
     {
       "Character": "閔",
       "UNICODE": "0x9594"
+    },
+    {
+      "Character": "鿬",
+      "UNICODE": "0x9FEC"
+    },
+    {
+      "Character": "𨧀",
+      "UNICODE": "0x289C0"
+    },
+    {
+      "Character": "𨭎",
+      "UNICODE": "0x28B4E"
+    },
+    {
+      "Character": "𨨏",
+      "UNICODE": "0x28A0F"
+    },
+    {
+      "Character": "𨭆",
+      "UNICODE": "0x28B46"
+    },
+    {
+      "Character": "鿫",
+      "UNICODE": "0x9FEB"
     }
   ]
 }
