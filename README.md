@@ -1,5 +1,4 @@
 # Generate Manuscript Paper
-<<<<<<< HEAD
 [[Github]](https://github.com/lctung/01-1_generate_paper)  [[Hackmd]](https://hackmd.io/@tung23/r1KVpaO8Wx)  `114-2 生成式人工智慧`
 
 ![flow](./img/flow.png)
@@ -19,7 +18,6 @@
 7. 標點符號
 8. 姓氏名字號
 ```
-<<<<<<< HEAD
 
 -----
 
@@ -76,7 +74,6 @@ cd D:\NTUT\AI\Font-Project\01_generate_paper-main
 - 將該次[作業](https://tjhsieh.github.io/c/ai/ai2026s/hw/index.html)的指定稿紙內容貼至 `manuscript_paper.txt`
 - 貼上時，請略過所有 **來源連結**、**標題**
 - 除了 `詩經` 請連標題一起貼
-<<<<<<< HEAD
 - 有 **標點符號**、**空行**、**空格**、**標點符號** 沒關係
 =======
 - 有 **空行**、**空格**、**標點符號** 沒關係
@@ -134,15 +131,17 @@ cd 2_generate_manuscript
 
 ### 3. 執行程式碼
 #### (1) 生成 svg 稿紙
-<<<<<<< HEAD
 儲存位置：`.\2_generate_manuscript\{稿紙標題>\{稿紙標題}-Table`
 =======
-
+##### 原版：
 ```
 python 1_SVGtable.py
 ```
+##### 加強版：
+```
+python 1a_SVGtable.py
+```
 #### (2) 在 svg 稿紙加上 QRcode
-<<<<<<< HEAD
 儲存位置：`.\2_generate_manuscript\{稿紙標題}\{稿紙標題}-Merge`
 =======
 
@@ -150,7 +149,6 @@ python 1_SVGtable.py
 python 2_QR_add.py
 ```
 #### (3) svg 轉成 pdf
-<<<<<<< HEAD
 儲存位置：`.\2_generate_manuscript\{稿紙標題}\{稿紙標題}-PDF`
 =======
 
@@ -176,7 +174,6 @@ python 4_PDFmerge.py
 - [作業網站連結](https://tjhsieh.github.io/c/ai/ai2026s/hw/index.html) 
 - 將前4份稿紙內容貼至 `all_manuscript.txt`
 - 貼上時，請略過所有 **來源連結**
-<<<<<<< HEAD
 - 有 **標題**、**空行**、**空格**、**標點符號** 沒關係
 =======
 - 有 **空行**、**空格**、**標點符號** 沒關係
