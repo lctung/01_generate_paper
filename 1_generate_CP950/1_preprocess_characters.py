@@ -16,7 +16,11 @@ title = input("請輸入稿紙標題 (ex. 千字文)：")
 # 依據空白字元分割
 raw_clean_text = "".join(text.lstrip('\ufeff').split())
 
+<<<<<<< HEAD
 is_specified = input("是否刪除標點符號(y/n)： ")
+=======
+is_specified = input("是否刪除指定字元(y/n)： ")
+>>>>>>> d1e4a67 (updata)
 
 if is_specified == 'y':
     exclude_chars = "，。；「」：！？《》、"  # <填入指定刪除的字元>

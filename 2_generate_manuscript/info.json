@@ -1,8 +1,16 @@
 {
+<<<<<<< HEAD
     "TITLE": "千字文",
     "TOTAL_CHARACTERS": 78,
     "TOTAL_PAGES": 1,
     "ID": "114598033",
     "NAME": "賴秋彤",
+=======
+    "TITLE": "英文、數字",
+    "TOTAL_CHARACTERS": 344,
+    "TOTAL_PAGES": 4,
+    "ID": "113590051",
+    "NAME": "楊承諭",
+>>>>>>> d1e4a67 (updata)
     "NUMBER": 0
 }

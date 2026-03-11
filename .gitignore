@@ -1,5 +1,14 @@
 # -- 系統與環境 --
+<<<<<<< HEAD
 __pycache__
+=======
+__pycache__/
+.venv/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+>>>>>>> d1e4a67 (updata)
 
 # -- 暫存與記錄檔 --
 character.txt

@@ -1,9 +1,13 @@
 # Generate Manuscript Paper
+<<<<<<< HEAD
 [[Github]](https://github.com/lctung/01-1_generate_paper)  [[Hackmd]](https://hackmd.io/@tung23/r1KVpaO8Wx)  `114-2 生成式人工智慧`
 
 ![flow](./img/flow.png)
 
 ----
+=======
+[[Github]](https://github.com/lctung/01-1_generate_paper) [[Hackmd]](https://hackmd.io/@tung23/r1KVpaO8Wx) `114-2 生成式人工智慧`
+![flow](./img/flow.png)
 ```
 # [稿紙對應編號]
 1. 千字文
@@ -15,9 +19,11 @@
 7. 標點符號
 8. 姓氏名字號
 ```
+<<<<<<< HEAD
 
 -----
 
+=======
 ## 🔆環境建置(初次設定)
 ### 1. 下載專案
 點擊右上角綠色 `CODE` --> `DOWNLOAD ZIP`
@@ -70,7 +76,10 @@ cd D:\NTUT\AI\Font-Project\01_generate_paper-main
 - 將該次[作業](https://tjhsieh.github.io/c/ai/ai2026s/hw/index.html)的指定稿紙內容貼至 `manuscript_paper.txt`
 - 貼上時，請略過所有 **來源連結**、**標題**
 - 除了 `詩經` 請連標題一起貼
+<<<<<<< HEAD
 - 有 **標點符號**、**空行**、**空格**、**標點符號** 沒關係
+=======
+- 有 **空行**、**空格**、**標點符號** 沒關係
 
 ### 2. 切換目錄至 `1_generate_CP950`
 ```
@@ -89,7 +98,10 @@ python 1_preprocess_characters.py
     - y: 刪除指定字元，如：，。；「」等
     - 適用稿紙： `千字文` `長恨歌` `洛神賦` `詩經`
 - 是否去除重複字元(y/n)
+<<<<<<< HEAD
     - y: 去除曾經出現在 `千字文` `長恨歌` `洛神賦` `詩經` 的字元，以及刪除同份稿紙內容中的重複字元
+=======
+    - y: 去除曾經出現在`千字文` `長恨歌` `洛神賦` `詩經` 的字元，以及刪除同份稿紙內容中的重複字元
     - 適用稿紙： `部首、注音、日文` `英文、數字` `標點符號` `姓氏名字號`
 
 ### 4. 產生 `CP950-{title}.json`
@@ -122,22 +134,34 @@ cd 2_generate_manuscript
 
 ### 3. 執行程式碼
 #### (1) 生成 svg 稿紙
+<<<<<<< HEAD
 儲存位置：`.\2_generate_manuscript\{稿紙標題>\{稿紙標題}-Table`
+=======
+
 ```
 python 1_SVGtable.py
 ```
 #### (2) 在 svg 稿紙加上 QRcode
+<<<<<<< HEAD
 儲存位置：`.\2_generate_manuscript\{稿紙標題}\{稿紙標題}-Merge`
+=======
+
 ```
 python 2_QR_add.py
 ```
 #### (3) svg 轉成 pdf
+<<<<<<< HEAD
 儲存位置：`.\2_generate_manuscript\{稿紙標題}\{稿紙標題}-PDF`
+=======
+
 ```
 python 3_SVG2PDF.py
 ```
 #### (4) 多個 pdf 檔案合併成一個 pdf 檔案
+<<<<<<< HEAD
 儲存位置：`.\2_generate_manuscript\manuscripts-final`
+=======
+
 ```
 python 4_PDFmerge.py
 ```
@@ -152,7 +176,11 @@ python 4_PDFmerge.py
 - [作業網站連結](https://tjhsieh.github.io/c/ai/ai2026s/hw/index.html) 
 - 將前4份稿紙內容貼至 `all_manuscript.txt`
 - 貼上時，請略過所有 **來源連結**
+<<<<<<< HEAD
 - 有 **標題**、**空行**、**空格**、**標點符號** 沒關係
+=======
+- 有 **空行**、**空格**、**標點符號** 沒關係
+
 
 ### 2. 切換目錄至 `1_generate_CP950`
 ```
